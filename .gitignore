@@ -1,0 +1,4 @@
+# .gitignore
+/env
+/Core/video-retalking/
+/Core/MVSEP-MDX23-Colab_v2/

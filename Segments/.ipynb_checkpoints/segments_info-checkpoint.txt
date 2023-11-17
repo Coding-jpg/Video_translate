@@ -1,0 +1,19 @@
+/root/autodl-tmp/Segments/0.wav|0.0|5.6|5.6| OpenAI's GPTs are now live and the opportunities of what we can build now is absolutely ridiculous.
+/root/autodl-tmp/Segments/1.wav|5.8|10.2|4.4| So in today's video that is exactly what we're going to be doing. Now I personally see GPTs
+/root/autodl-tmp/Segments/2.wav|10.2|15.1|4.9| being used across almost every single business in the near future where they can have these
+/root/autodl-tmp/Segments/3.wav|15.1|20.2|5.1| independent virtual assistants built into their processes. Now the good thing about GPTs is you
+/root/autodl-tmp/Segments/4.wav|20.2|26.2|6.0| can create them very easily and you can also tie them into Zapier that has over 6,000 different
+/root/autodl-tmp/Segments/5.wav|26.2|31.1|4.9| integrations into different applications. So what that gives us an opportunity to do is build out
+/root/autodl-tmp/Segments/6.wav|31.1|35.1|4.0| these agents that can work across different applications and we don't even need to have
+/root/autodl-tmp/Segments/7.wav|35.1|39.2|4.2| any developer experience or tech experience to build them. In today's video I want to walk you
+/root/autodl-tmp/Segments/8.wav|39.2|44.5|5.2| through a live build of me building a personal assistant or a business assistant that you can
+/root/autodl-tmp/Segments/9.wav|44.5|48.6|4.2| either take to your clients if you run an AI automation agency or you can build for your
+/root/autodl-tmp/Segments/10.wav|48.6|52.2|3.6| own business. We're going to be tying this assistant into different apps so that it can
+/root/autodl-tmp/Segments/11.wav|52.2|55.7|3.5| send emails for us, check our calendar, it can make bookings,
+/root/autodl-tmp/Segments/12.wav|56.0|56.2|0.2| it can create a list of all the different applications that we can build into our
+/root/autodl-tmp/Segments/13.wav|56.2|60.1|3.9| business. We can create a to-do list, pretty much anything that we can dream up. If it's on Zapier
+/root/autodl-tmp/Segments/14.wav|60.1|64.9|4.8| we can integrate into this GPT and we can build it. I will also be leaving free resources down
+/root/autodl-tmp/Segments/15.wav|64.9|69.4|4.5| below on this video so if at any point you get stuck and you need to download some guides I've
+/root/autodl-tmp/Segments/16.wav|69.4|72.9|3.6| collected all the useful resources that I've found online that I've been using that have helped me
+/root/autodl-tmp/Segments/17.wav|72.9|77.7|4.8| build this GPT and I've put them in one word document for you so you can go and download that
+/root/autodl-tmp/Segments/18.wav|77.7|78.2|0.5| right now.
