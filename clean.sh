@@ -1,7 +1,7 @@
 #!/bin/bash
 rm /root/autodl-tmp/INPUT/audio.wav
 rm /root/autodl-tmp/INPUT/video.mp4
-rm /root/autodl-tmp/INPUT/Size_segment/*.wav
+rm /root/autodl-tmp/INPUT/Size_segments/*.wav
 rm /root/autodl-tmp/Core/MVSEP-MDX23-Colab_v2/input/*.wav
 rm /root/autodl-tmp/Core/MVSEP-MDX23-Colab_v2/output/*.wav
 rm /root/autodl-tmp/Segments/*
