@@ -27,15 +27,15 @@ xikey = ''
 
 # 读取配置文件
 with open('/root/autodl-tmp/config.txt', 'r') as file:
-    lines = file.readlines()
-    for line in lines:
-        key, value = line.strip().split('=')
-        if key == 'appid':
-            appid = value
-        elif key == 'appkey':
-            appkey = value
-        elif key == 'xikey':
-            xikey = value
+	lines = file.readlines()
+	for line in lines:
+		key, value = line.strip().split('=')
+		if key == 'appid':
+			appid = value
+		elif key == 'appkey':
+			appkey = value
+		elif key == 'xikey':
+			xikey = value
 
 # For list of language codes, please refer to `https://api.fanyi.baidu.com/doc/21`
 from_lang = args.from_lang
@@ -105,7 +105,7 @@ def segment_for_size(vocals_size, vocals_path):
 	else:
 		print(f"Folder {segments_path} exists.")
 
-	file_path = '/root/autodl-tmp/INPUT/Size_segment/vocals%03d.wav'
+	file_path = '/root/autodl-tmp/INPUT/Size_segments/vocals%03d.wav'
 
 	cmd = [
 		'ffmpeg',
@@ -143,20 +143,39 @@ def voice_clone(file_name, vocals_path):
 	
 	# 根据原始人声分割音频
 	if vocals_size > 10:
+		print(f"开始准备克隆素材，vocals_size = {vocals_size}\nvocals_path = {vocals_path}")
 		segment_for_size(vocals_size, vocals_path)
 
 	# 上传训练音频
 	dataset = []
-	segments_dir = '/root/autodl-tmp/INPUT/Size_segment/'
+	segments_dir = '/root/autodl-tmp/INPUT/Size_segments/'
 	for root, dirs, seg_files in os.walk(segments_dir):
 		for file in seg_files:
 			if file.endswith('.wav'):
 				file_dir = os.path.join(root, file)
 				wav_data = ('files', (file_dir, open(file_dir, 'rb'), 'audio/mpeg'))
 				dataset.append(wav_data)
-	
-	response = requests.post(url, headers=headers, data=data, files=dataset)
-	print("Successfully clone voice!\n")
+
+	# print(f"dataset: {dataset}\n")
+
+	try:
+		response = requests.post(url, headers=headers, data=data, files=dataset)
+		response.raise_for_status()  # 引发HTTPError，如果响应是4xx或5xx
+	# 处理成功的响应
+	except requests.exceptions.HTTPError as http_err:
+		# 处理HTTP错误
+		print(f"HTTP error occurred: {http_err}")
+	except requests.exceptions.ConnectionError as conn_err:
+		# 处理连接相关的错误
+		print(f"Connection error occurred: {conn_err}")
+	except requests.exceptions.Timeout as timeout_err:
+		# 处理请求超时错误
+		print(f"Timeout error occurred: {timeout_err}")
+	except requests.exceptions.RequestException as req_err:
+		# 处理其他requests相关的错误
+		print(f"An error occurred: {req_err}")
+		
+	print(f"Successfully clone voice!\nvoice ID {response.json()['voice_id']}\n")
 
 	# print(response.json())
 	voice_id = response.json()['voice_id']
@@ -210,6 +229,7 @@ def tts(file_name, vocals_path):
 		  }
 		}
 		response = requests.post(url, json=data, headers=headers)
+		print(f"语音合成返回状态码： {response.status_code}")
 		with open(f'/root/autodl-tmp/Trans_vocals/{index}_trans.mp3', 'wb') as f:
 			for chunk in response.iter_content(chunk_size=CHUNK_SIZE):
 				if chunk:
@@ -241,7 +261,7 @@ def get_audio_length(file_path):
 
 	result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 	duration = result.stdout.decode('utf-8').strip()
-
+	print(f'{duration}')
 	# 使用正则表达式来确保输出的是时长信息
 	match = re.match(r'^\d+\.\d+$', duration)
 	if match:
